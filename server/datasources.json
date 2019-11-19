@@ -1,10 +1,10 @@
 {
-  "dbLocal": {
+  "db": {
     "url":"mongodb+srv://folajoe:femi5252.net@cluster0-hlbnm.mongodb.net/test?retryWrites=true&w=majority",
     "name": "dbLocal",
     "connector": "mongodb"
   },
-  "db":{
+  "dbLocal":{
     
     "host": "cluster0-hlbnm.mongodb.net",
     "port": 27017,

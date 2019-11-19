@@ -20,7 +20,7 @@
     "helmet#hsts": {
       "params": {
         "maxAge": 0,
-        "includeSubDomains": true
+        "includeSubdomains": true
       }
     },
     "helmet#hidePoweredBy": {},
