@@ -1,19 +1,11 @@
 {
+  
   "db": {
     "url":"mongodb+srv://folajoe:femi5252.net@cluster0-hlbnm.mongodb.net/test?retryWrites=true&w=majority",
-    "name": "dbLocal",
+    "name": "db",
     "connector": "mongodb"
   },
-  "dbLocal":{
-    
-    "host": "cluster0-hlbnm.mongodb.net",
-    "port": 27017,
-    "database": "test",
-    "password": "femi5252.net",
-    "name": "db",
-    "connector": "mongodb",
-    "user": "folajoe"
-  },
+  
   "myFile": {
     "name": "myFile",
     "connector": "loopback-component-storage",
