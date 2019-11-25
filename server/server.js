@@ -37,13 +37,14 @@ console.log(Object.keys(app.models));
 
 
 app.models.user.find((err, result) => {
+  if(!err && result){
   if(result.length === 0){
     const demoUser = { email:"folajoe@gmail.com",password: "test", username:"folajoe"};
     app.models.user.create(demoUser,(err,result) =>{
       console.log("Tried to create a user:", err, result);
 
     });
-  }
+  }}
    
 });
 
@@ -68,37 +69,29 @@ app.models.user.afterRemote('create',(ctx,user, next) =>{
         }
       
   });
-  app.models.Role.find({where:{name:user.role}}, (err2, role)=>{
-    if(!err2 && role){
-      if(role.length > 0){
-        console.log("Adding a new admin");
-        role[0].principals.create({
-          principalType: app.models.RoleMapping.USER,
-          principalId : user.id 
-        },(err3,principal)=>{
-          console.log('Admin created',err3,principal);
+  console.log(user.role)
+  if(user.role){
+    app.models.Role.find({where:{name:user.role}}, (err2, role)=>{
+      if(!err2 && role){
+        if(role[0].name === user.role){
+          console.log(`Adding a ${user.role}`);
+          role[0].principals.create({
+            principalType: app.models.RoleMapping.USER,
+            principalId : user.id 
+          },(err3,principal)=>{
+            console.log('Created',err3,principal);
+  
+          })
+        }
+       
+      }
+      else{
+        console.log("Unexpected situation");
+      }
+    });
 
-        })
-      }
-      else {
-        console.log("For Editor and subscriber");
-        app.models.Role.create({name: user.role}, (err3, result) =>
-        {
-          if(!err3 && result){
-            result.principals.create({
-              principalType: app.models.RoleMapping.USER,
-              principalId : user.id
-            },(err4, principal)=>{
-                console.log("Created principal", err4, principal);
-            });
-          }
-        });
-      }
-    }
-    else{
-      console.log("Unexpected situation");
-    }
-  });
+  }
+  
   next();
 });
 
