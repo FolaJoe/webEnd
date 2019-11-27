@@ -128,3 +128,13 @@ app.models.Role.find({where:{name:'editor'}},(roleErr, roles) => {
     }
   }
 });
+app.models.Role.find({where:{name:'subscriber'}},(roleErr, roles) => {
+  if(!roleErr && roles){
+    console.log(roles);
+    if(roles.length === 0){
+      app.models.Role.create({name: 'subscriber'}, (createRoleErr, result)=>{
+        console.log(createRoleErr, result);
+      });
+    }
+  }
+});
