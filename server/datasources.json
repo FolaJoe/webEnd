@@ -1,8 +1,12 @@
 {
-  "db": {
-    "url":"mongodb+srv://folajoe:femi5252.net@cluster0-hlbnm.mongodb.net/test?retryWrites=true&w=majority",
-    "name": "db",
-    "connector": "mongodb"
+  "db":{
+    "host":"localhost",
+    "port": 27017,
+    "database":"blog",
+    "name":"db",
+    "connector":"mongodb",
+    "user":"",
+    "password":""
   },
   
   "myFile": {
