@@ -39,7 +39,7 @@ console.log(Object.keys(app.models));
 app.models.user.find((err, result) => {
   if(!err && result){
   if(result.length === 0){
-    const demoUser = { email:"folajoe@gmail.com",password: "test", username:"folajoe"};
+    const demoUser = { email:"folajoe5@gmail.com",password: "femi5252.NET", username:"folajoe"};
     app.models.user.create(demoUser,(err,result) =>{
       console.log("Tried to create a user:", err, result);
 
